@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { ComponentProps, useEffect, useMemo, useState } from "react";
+import { ComponentProps } from "react";
 
 type IconProps = ComponentProps<"svg">;
 
@@ -114,8 +112,6 @@ const PhoneIcon = ({ className, ...props }: IconProps) => (
   </svg>
 );
 
-const HERO_TITLES = ["Full Stack\nDeveloper", "AI Engineer"];
-
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
@@ -180,6 +176,7 @@ const skillBadges = [
   "Vercel",
   "Jira",
   "AI / ML",
+  "System Design",
   "Computer Networks",
   "Operating Systems",
   "DBMS",
@@ -191,7 +188,6 @@ const projects = [
     subtitle: "Conversational OS for the browser",
     image: "/Virtual Aiistant project.png",
     href: "https://virtual-assistant-9u59.onrender.com/",
-    repo: "https://github.com/imgaurav0001/virtual-assistant",
     summary:
       "Voice + text assistant that interprets natural commands, calls real-time APIs, and drives reminders, news digests, and contextual answers.",
     features: [
@@ -206,7 +202,6 @@ const projects = [
     subtitle: "Immersive streaming experience",
     image: "/spotify clone project.png",
     href: "https://spotify-clone-by-gaurav.vercel.app/",
-    repo: "https://github.com/imgaurav0001/Spotify-Clone",
     summary:
       "A premium streaming app mirroring Spotify interactions, adaptive theming, seamless queueing, and collaborative playlists.",
     features: [
@@ -221,7 +216,6 @@ const projects = [
     subtitle: "Single + multiplayer quiz battles",
     image: "/Quiz Game Project.png",
     href: "https://trivia-quiz-application-game.vercel.app/",
-    repo: "https://github.com/imgaurav0001/Trivia-Quiz-Application-Game",
     summary:
       "Dynamic trivia hub with curated categories, duo arenas, and streak-based power-ups for campus fests.",
     features: [
@@ -271,93 +265,38 @@ const education = [
   {
     institution: "Nodegay Public School, Khatima · Uttarakhand",
     location: "Class X",
-    program: "CBSE Board · Percentage: 82%",
+    program: "CBSE Board",
     period: "2019",
-  },
-];
-
-const contactDetails = [
-  {
-    icon: MailIcon,
-    label: "Email",
-    value: "gauravjoshi327@gmail.com",
-    href: "mailto:gauravjoshi327@gmail.com",
-  },
-  {
-    icon: LinkedinIcon,
-    label: "LinkedIn",
-    value: "linkedin.com/in/gauravjoshi327",
-    href: "https://www.linkedin.com/in/gauravjoshi327/",
-  },
-  {
-    icon: GithubIcon,
-    label: "GitHub",
-    value: "github.com/imgaurav0001",
-    href: "https://github.com/imgaurav0001",
-  },
-  {
-    icon: PhoneIcon,
-    label: "Phone",
-    value: "+91 97606 73280",
-    href: "tel:+919760673280",
   },
 ];
 
 const resumeLink =
   "https://drive.google.com/file/d/1fzO5uDisbO-6diAoAi9WGpdAytkgRxoK/view?usp=drive_link";
 
+const contactLinks = [
+  {
+    icon: GithubIcon,
+    label: "GitHub",
+    href: "https://github.com/imgaurav0001",
+  },
+  {
+    icon: LinkedinIcon,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/gauravjoshi327/",
+  },
+  {
+    icon: MailIcon,
+    label: "gauravjoshi327@gmail.com",
+    href: "mailto:gauravjoshi327@gmail.com",
+  },
+  {
+    icon: PhoneIcon,
+    label: "+91 97606 73280",
+    href: "tel:+919760673280",
+  },
+];
+
 export default function Home() {
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [displayedTitle, setDisplayedTitle] = useState("");
-
-  useEffect(() => {
-    const currentTitle = HERO_TITLES[titleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex < currentTitle.length) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev + 1), 80);
-    } else if (!isDeleting && charIndex === currentTitle.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1600);
-    } else if (isDeleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev - 1), 45);
-    } else if (isDeleting && charIndex === 0) {
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-        setTitleIndex((prev) => (prev + 1) % HERO_TITLES.length);
-      }, 250);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, titleIndex]);
-
-  useEffect(() => {
-    setDisplayedTitle(HERO_TITLES[titleIndex].slice(0, charIndex));
-  }, [charIndex, titleIndex]);
-
-  const handleContactSubmit = (
-    event: React.FormEvent<HTMLFormElement>
-  ): void => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const name = formData.get("name") ?? "";
-    const email = formData.get("email") ?? "";
-    const message = formData.get("message") ?? "";
-
-    const subject = encodeURIComponent(`New portfolio message from ${name}`);
-    const body = encodeURIComponent(
-      `Hi Gaurav,\n\n${message}\n\nSender details:\nName: ${name}\nEmail: ${email}`
-    );
-    window.location.href = `mailto:gauravjoshi327@gmail.com?subject=${subject}&body=${body}`;
-    event.currentTarget.reset();
-  };
-
-  const marqueeCerts = useMemo(
-    () => [...certifications, ...certifications],
-    []
-  );
-
   return (
     <div className="page-shell min-h-screen text-slate-100">
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-8 md:pb-24 md:pt-16">
@@ -394,43 +333,35 @@ export default function Home() {
               Hello, I&apos;m
             </span>
             <div>
+              <p className="text-sm font-medium uppercase tracking-[0.4em] text-cyan-200">
+                Software & AI Engineer
+              </p>
               <h1 className="mt-3 text-5xl font-semibold leading-tight text-white md:text-6xl">
                 Gaurav Joshi
                 <br />
-                <span
-                  aria-live="polite"
-                  className="inline-block whitespace-pre-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
-                >
-                  {displayedTitle || "\u00A0"}
+                <span className="text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text">
+                  Full Stack Developer
                 </span>
               </h1>
             </div>
-            <p className="max-w-2xl text-lg text-slate-300">
+            <p className="text-lg text-slate-300">
               I build human-centered digital experiences that are fast,
               intelligent, and visually stunning. With a strong foundation in CS
               fundamentals and DevOps hygiene, I translate complex requirements
               into launch-ready products with AI-infused workflows.
             </p>
-            <div className="flex w-full max-w-sm flex-col gap-3">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="#contact"
-                className="inline-flex w-full items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
               >
                 Get in touch <SendIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="#projects"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
                 View projects <ArrowUpRightIcon className="h-4 w-4" />
-              </Link>
-              <Link
-                href={resumeLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
-              >
-                Download CV <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
             </div>
             <div className="flex gap-4 text-slate-300">
@@ -461,16 +392,15 @@ export default function Home() {
 
           <div className="flex flex-col items-center gap-8">
             <div className="w-full rounded-[28px] border border-white/10 bg-gradient-to-b from-[#182044] to-[#0E122B] p-4">
-              <div className="group relative h-[320px] overflow-hidden rounded-[24px] border border-white/10 bg-[#0B0E1F] shadow-[0_30px_160px_-60px_rgba(99,102,241,0.8)] sm:h-[380px] lg:h-[420px]">
-        <Image
+              <div className="relative h-[420px] overflow-hidden rounded-[24px] border border-white/10 bg-[#0B0E1F] shadow-[0_30px_160px_-60px_rgba(99,102,241,0.8)]">
+                <Image
                   src="/My-Profile_Image.jpg"
                   alt="Gaurav Joshi portrait"
                   fill
-                  className="object-cover transition duration-700 group-hover:scale-110 group-hover:-rotate-1 group-hover:brightness-110"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 80vw, 40vw"
-          priority
-        />
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-700 group-hover:opacity-100" />
+                  priority
+                />
               </div>
             </div>
             <div className="grid w-full gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 sm:grid-cols-3">
@@ -501,11 +431,11 @@ export default function Home() {
               Shipping with modern, battle-tested tech
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-2 text-sm font-semibold sm:grid-cols-3 md:grid-cols-4">
+          <div className="flex flex-wrap gap-2 text-sm font-semibold">
             {skillBadges.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-center text-slate-100"
+                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-slate-100"
               >
                 {skill}
               </span>
@@ -555,59 +485,36 @@ export default function Home() {
             >
               Visit GitHub <ArrowUpRightIcon className="h-4 w-4" />
             </Link>
-        </div>
+          </div>
           <div className="grid gap-8">
             {projects.map((project) => (
-              <article
+              <Link
                 key={project.title}
-                className="grid gap-6 rounded-[28px] border border-white/10 bg-slate-900/50 p-6 backdrop-blur-2xl transition hover:border-cyan-300/60 lg:grid-cols-2"
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group grid gap-6 rounded-[28px] border border-white/10 bg-slate-900/50 p-6 backdrop-blur-2xl transition hover:border-cyan-300/60 lg:grid-cols-2"
               >
-                <Link
-                  href={project.href}
-            target="_blank"
-                  rel="noreferrer"
-                  className="group relative block min-h-[260px] overflow-hidden rounded-2xl border border-white/10"
-          >
-            <Image
+                <div className="relative min-h-[280px] overflow-hidden rounded-2xl border border-white/10">
+                  <Image
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     fill
-                    className="object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1"
+                    className="object-cover transition duration-300 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={project.title === "AI Virtual Assistant"}
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-black/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
-                    Live
-                  </span>
-                </Link>
+                </div>
                 <div className="space-y-4">
-                  <div>
+                  <div className="space-y-2">
                     <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                       {project.subtitle}
                     </p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">
+                    <h3 className="text-2xl font-semibold text-white">
                       {project.title}
                     </h3>
-                    <div className="mt-3 flex gap-2">
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 rounded-full border border-white/15 px-4 py-1 text-xs font-semibold text-white transition hover:border-cyan-300/70"
-                      >
-                        Live <ArrowUpRightIcon className="h-3.5 w-3.5" />
-                      </Link>
-                      <Link
-                        href={project.repo}
-            target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 rounded-full border border-white/15 px-4 py-1 text-xs font-semibold text-white transition hover:border-cyan-300/70"
-                      >
-                        Code <GithubIcon className="h-3.5 w-3.5" />
-                      </Link>
-                    </div>
+                    <p className="text-slate-300">{project.summary}</p>
                   </div>
-                  <p className="text-slate-300">{project.summary}</p>
                   <ul className="space-y-2 text-sm text-slate-300">
                     {project.features.map((feature) => (
                       <li key={feature} className="flex gap-2">
@@ -626,8 +533,11 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">
+                    Visit live build <ArrowUpRightIcon className="h-4 w-4" />
+                  </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
@@ -679,136 +589,73 @@ export default function Home() {
               Scrum · Security · Java
             </span>
           </div>
-          <div className="marquee-wrapper overflow-hidden">
-            <div className="marquee-track gap-4">
-              {marqueeCerts.map((cert, index) => (
-                <article
-                  key={`${cert.title}-${index}`}
-                  className="w-72 flex-shrink-0 rounded-3xl border border-white/10 bg-white/5 p-4"
-                >
-                  <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
-                    <Image
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      className="object-cover"
-                      sizes="288px"
-                    />
-                  </div>
-                  <p className="mt-4 text-xs uppercase tracking-[0.3em] text-slate-400">
-                    {cert.date}
-                  </p>
-                  <h3 className="mt-2 text-lg font-semibold text-white">
-                    {cert.title}
-                  </h3>
-                  <p className="text-sm text-slate-300">{cert.org}</p>
-                </article>
-              ))}
-            </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {certifications.map((cert) => (
+              <article
+                key={cert.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-4"
+              >
+                <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
+                  <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-slate-400">
+                  {cert.date}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold text-white">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-slate-300">{cert.org}</p>
+              </article>
+            ))}
           </div>
         </section>
 
         <section
           id="contact"
-          className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0b132b] via-[#101836] to-[#0f172a] p-8 backdrop-blur-2xl"
+          className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-indigo-500/20 via-cyan-500/20 to-transparent p-8 backdrop-blur-2xl"
         >
-          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-                  Get in touch
-                </p>
-                <h2 className="mt-2 text-3xl font-semibold text-white">
-                  Let&apos;s collaborate on your next product.
-                </h2>
-                <p className="text-slate-300">
-                  I&apos;m open to full-time roles, freelance engagements, and
-                  mentorship chats. Share what you&apos;re building and I&apos;ll
-                  reply with next steps within 24 hours.
-                </p>
-              </div>
-              <div className="space-y-3">
-                {contactDetails.map(({ icon: Icon, label, value, href }) => (
-                  <Link
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition hover:border-cyan-300/60"
-                  >
-                    <span className="rounded-2xl bg-white/10 p-3">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-white">
-                        {label}
-                      </p>
-                      <p className="text-sm text-slate-300">{value}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
+                Let&apos;s build together
+              </p>
+              <h2 className="text-3xl font-semibold text-white">
+                Open to software developer, AI/automation, and DX roles.
+              </h2>
+              <p className="text-slate-100/80">
+                Send an email, DM on LinkedIn, or ring me. I reply fast with a
+                project plan and crisp next steps.
+              </p>
             </div>
-            <form
-              onSubmit={handleContactSubmit}
-              className="space-y-4 rounded-3xl border border-white/15 bg-white/5 p-6"
+            <Link
+              href="mailto:gauravjoshi327@gmail.com"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:opacity-85"
             >
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-sm font-semibold text-white"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-sm font-semibold text-white"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="text-sm font-semibold text-white"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Share project goals, timelines, or ideas..."
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 py-3 text-base font-semibold text-slate-900 transition hover:opacity-90"
+              Write to me <SendIcon className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {contactLinks.map(({ icon: Icon, label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/10 p-4 text-white transition hover:border-white/60"
               >
-                Send message
-              </button>
-            </form>
-        </div>
+                <span className="rounded-2xl bg-white/20 p-3">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="text-sm font-semibold">{label}</span>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <p className="mt-12 text-center text-xs uppercase tracking-[0.35em] text-slate-500">

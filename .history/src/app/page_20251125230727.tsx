@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ComponentProps, useEffect, useMemo, useState } from "react";
@@ -114,8 +112,6 @@ const PhoneIcon = ({ className, ...props }: IconProps) => (
   </svg>
 );
 
-const HERO_TITLES = ["Full Stack\nDeveloper", "AI Engineer"];
-
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
@@ -180,6 +176,7 @@ const skillBadges = [
   "Vercel",
   "Jira",
   "AI / ML",
+  "System Design",
   "Computer Networks",
   "Operating Systems",
   "DBMS",
@@ -271,7 +268,7 @@ const education = [
   {
     institution: "Nodegay Public School, Khatima · Uttarakhand",
     location: "Class X",
-    program: "CBSE Board · Percentage: 82%",
+    program: "CBSE Board",
     period: "2019",
   },
 ];
@@ -307,34 +304,20 @@ const resumeLink =
   "https://drive.google.com/file/d/1fzO5uDisbO-6diAoAi9WGpdAytkgRxoK/view?usp=drive_link";
 
 export default function Home() {
+  const heroTitles = useMemo(
+    () => ["Full Stack Developer", "AI Engineer"],
+    []
+  );
   const [titleIndex, setTitleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [displayedTitle, setDisplayedTitle] = useState("");
+  const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
-    const currentTitle = HERO_TITLES[titleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex < currentTitle.length) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev + 1), 80);
-    } else if (!isDeleting && charIndex === currentTitle.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1600);
-    } else if (isDeleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev - 1), 45);
-    } else if (isDeleting && charIndex === 0) {
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-        setTitleIndex((prev) => (prev + 1) % HERO_TITLES.length);
-      }, 250);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, titleIndex]);
-
-  useEffect(() => {
-    setDisplayedTitle(HERO_TITLES[titleIndex].slice(0, charIndex));
-  }, [charIndex, titleIndex]);
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % heroTitles.length);
+      setAnimKey((prev) => prev + 1);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [heroTitles.length]);
 
   const handleContactSubmit = (
     event: React.FormEvent<HTMLFormElement>
@@ -394,14 +377,17 @@ export default function Home() {
               Hello, I&apos;m
             </span>
             <div>
+              <p className="text-sm font-medium uppercase tracking-[0.4em] text-cyan-200">
+                Greater Noida · India
+              </p>
               <h1 className="mt-3 text-5xl font-semibold leading-tight text-white md:text-6xl">
                 Gaurav Joshi
                 <br />
                 <span
-                  aria-live="polite"
-                  className="inline-block whitespace-pre-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
+                  key={animKey}
+                  className="typing-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
                 >
-                  {displayedTitle || "\u00A0"}
+                  {heroTitles[titleIndex]}
                 </span>
               </h1>
             </div>
@@ -411,16 +397,16 @@ export default function Home() {
               fundamentals and DevOps hygiene, I translate complex requirements
               into launch-ready products with AI-infused workflows.
             </p>
-            <div className="flex w-full max-w-sm flex-col gap-3">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="#contact"
-                className="inline-flex w-full items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
               >
                 Get in touch <SendIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="#projects"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
                 View projects <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
@@ -428,7 +414,7 @@ export default function Home() {
                 href={resumeLink}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
                 Download CV <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
@@ -581,14 +567,16 @@ export default function Home() {
                   </span>
                 </Link>
                 <div className="space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                      {project.subtitle}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <div className="mt-3 flex gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                        {project.subtitle}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2">
                       <Link
                         href={project.href}
                         target="_blank"

@@ -114,7 +114,7 @@ const PhoneIcon = ({ className, ...props }: IconProps) => (
   </svg>
 );
 
-const HERO_TITLES = ["Full Stack\nDeveloper", "AI Engineer"];
+const HERO_TITLES = ["Full Stack Developer", "AI Engineer"];
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -336,6 +336,14 @@ export default function Home() {
     setDisplayedTitle(HERO_TITLES[titleIndex].slice(0, charIndex));
   }, [charIndex, titleIndex]);
 
+  const formattedTitle = useMemo(() => {
+    if (!displayedTitle) return "";
+    if (displayedTitle.includes("Developer")) {
+      return displayedTitle.replace("Developer", "\nDeveloper");
+    }
+    return displayedTitle;
+  }, [displayedTitle]);
+
   const handleContactSubmit = (
     event: React.FormEvent<HTMLFormElement>
   ): void => {
@@ -401,7 +409,7 @@ export default function Home() {
                   aria-live="polite"
                   className="inline-block whitespace-pre-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
                 >
-                  {displayedTitle || "\u00A0"}
+                  {formattedTitle || "\u00A0"}
                 </span>
               </h1>
             </div>
@@ -581,14 +589,16 @@ export default function Home() {
                   </span>
                 </Link>
                 <div className="space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                      {project.subtitle}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <div className="mt-3 flex gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                        {project.subtitle}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2">
                       <Link
                         href={project.href}
                         target="_blank"

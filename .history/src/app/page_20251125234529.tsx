@@ -401,7 +401,7 @@ export default function Home() {
                   aria-live="polite"
                   className="inline-block whitespace-pre-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
                 >
-                  {displayedTitle || "\u00A0"}
+                  {formattedTitle || "\u00A0"}
                 </span>
               </h1>
             </div>

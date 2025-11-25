@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ComponentProps, useEffect, useMemo, useState } from "react";
@@ -114,8 +112,6 @@ const PhoneIcon = ({ className, ...props }: IconProps) => (
   </svg>
 );
 
-const HERO_TITLES = ["Full Stack\nDeveloper", "AI Engineer"];
-
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
@@ -180,6 +176,7 @@ const skillBadges = [
   "Vercel",
   "Jira",
   "AI / ML",
+  "System Design",
   "Computer Networks",
   "Operating Systems",
   "DBMS",
@@ -271,70 +268,52 @@ const education = [
   {
     institution: "Nodegay Public School, Khatima · Uttarakhand",
     location: "Class X",
-    program: "CBSE Board · Percentage: 82%",
+    program: "CBSE Board",
     period: "2019",
-  },
-];
-
-const contactDetails = [
-  {
-    icon: MailIcon,
-    label: "Email",
-    value: "gauravjoshi327@gmail.com",
-    href: "mailto:gauravjoshi327@gmail.com",
-  },
-  {
-    icon: LinkedinIcon,
-    label: "LinkedIn",
-    value: "linkedin.com/in/gauravjoshi327",
-    href: "https://www.linkedin.com/in/gauravjoshi327/",
-  },
-  {
-    icon: GithubIcon,
-    label: "GitHub",
-    value: "github.com/imgaurav0001",
-    href: "https://github.com/imgaurav0001",
-  },
-  {
-    icon: PhoneIcon,
-    label: "Phone",
-    value: "+91 97606 73280",
-    href: "tel:+919760673280",
   },
 ];
 
 const resumeLink =
   "https://drive.google.com/file/d/1fzO5uDisbO-6diAoAi9WGpdAytkgRxoK/view?usp=drive_link";
 
+const contactLinks = [
+  {
+    icon: GithubIcon,
+    label: "GitHub",
+    href: "https://github.com/imgaurav0001",
+  },
+  {
+    icon: LinkedinIcon,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/gauravjoshi327/",
+  },
+  {
+    icon: MailIcon,
+    label: "gauravjoshi327@gmail.com",
+    href: "mailto:gauravjoshi327@gmail.com",
+  },
+  {
+    icon: PhoneIcon,
+    label: "+91 97606 73280",
+    href: "tel:+919760673280",
+  },
+];
+
 export default function Home() {
+  const heroTitles = useMemo(
+    () => ["Full Stack Developer", "AI Engineer"],
+    []
+  );
   const [titleIndex, setTitleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [displayedTitle, setDisplayedTitle] = useState("");
+  const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
-    const currentTitle = HERO_TITLES[titleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex < currentTitle.length) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev + 1), 80);
-    } else if (!isDeleting && charIndex === currentTitle.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1600);
-    } else if (isDeleting && charIndex > 0) {
-      timeout = setTimeout(() => setCharIndex((prev) => prev - 1), 45);
-    } else if (isDeleting && charIndex === 0) {
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-        setTitleIndex((prev) => (prev + 1) % HERO_TITLES.length);
-      }, 250);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, titleIndex]);
-
-  useEffect(() => {
-    setDisplayedTitle(HERO_TITLES[titleIndex].slice(0, charIndex));
-  }, [charIndex, titleIndex]);
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % heroTitles.length);
+      setAnimKey((prev) => prev + 1);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [heroTitles.length]);
 
   const handleContactSubmit = (
     event: React.FormEvent<HTMLFormElement>
@@ -352,11 +331,6 @@ export default function Home() {
     window.location.href = `mailto:gauravjoshi327@gmail.com?subject=${subject}&body=${body}`;
     event.currentTarget.reset();
   };
-
-  const marqueeCerts = useMemo(
-    () => [...certifications, ...certifications],
-    []
-  );
 
   return (
     <div className="page-shell min-h-screen text-slate-100">
@@ -394,14 +368,17 @@ export default function Home() {
               Hello, I&apos;m
             </span>
             <div>
+              <p className="text-sm font-medium uppercase tracking-[0.4em] text-cyan-200">
+                Greater Noida · India
+              </p>
               <h1 className="mt-3 text-5xl font-semibold leading-tight text-white md:text-6xl">
                 Gaurav Joshi
                 <br />
                 <span
-                  aria-live="polite"
-                  className="inline-block whitespace-pre-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
+                  key={animKey}
+                  className="typing-line text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text"
                 >
-                  {displayedTitle || "\u00A0"}
+                  {heroTitles[titleIndex]}
                 </span>
               </h1>
             </div>
@@ -411,16 +388,16 @@ export default function Home() {
               fundamentals and DevOps hygiene, I translate complex requirements
               into launch-ready products with AI-infused workflows.
             </p>
-            <div className="flex w-full max-w-sm flex-col gap-3">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="#contact"
-                className="inline-flex w-full items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
               >
                 Get in touch <SendIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="#projects"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
                 View projects <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
@@ -428,7 +405,7 @@ export default function Home() {
                 href={resumeLink}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
                 Download CV <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
@@ -501,7 +478,7 @@ export default function Home() {
               Shipping with modern, battle-tested tech
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-2 text-sm font-semibold sm:grid-cols-3 md:grid-cols-4">
+          <div className="grid gap-2 text-sm font-semibold grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {skillBadges.map((skill) => (
               <span
                 key={skill}
@@ -555,7 +532,7 @@ export default function Home() {
             >
               Visit GitHub <ArrowUpRightIcon className="h-4 w-4" />
             </Link>
-        </div>
+          </div>
           <div className="grid gap-8">
             {projects.map((project) => (
               <article
@@ -564,11 +541,11 @@ export default function Home() {
               >
                 <Link
                   href={project.href}
-            target="_blank"
+                  target="_blank"
                   rel="noreferrer"
                   className="group relative block min-h-[260px] overflow-hidden rounded-2xl border border-white/10"
-          >
-            <Image
+                >
+                  <Image
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     fill
@@ -581,14 +558,16 @@ export default function Home() {
                   </span>
                 </Link>
                 <div className="space-y-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                      {project.subtitle}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <div className="mt-3 flex gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                        {project.subtitle}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="flex gap-2">
                       <Link
                         href={project.href}
                         target="_blank"
@@ -599,7 +578,7 @@ export default function Home() {
                       </Link>
                       <Link
                         href={project.repo}
-            target="_blank"
+                        target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-1 rounded-full border border-white/15 px-4 py-1 text-xs font-semibold text-white transition hover:border-cyan-300/70"
                       >
@@ -678,136 +657,73 @@ export default function Home() {
             <span className="rounded-full border border-white/10 px-6 py-2 text-xs font-semibold tracking-[0.2em] text-slate-300">
               Scrum · Security · Java
             </span>
-          </div>
-          <div className="marquee-wrapper overflow-hidden">
-            <div className="marquee-track gap-4">
-              {marqueeCerts.map((cert, index) => (
-                <article
-                  key={`${cert.title}-${index}`}
-                  className="w-72 flex-shrink-0 rounded-3xl border border-white/10 bg-white/5 p-4"
-                >
-                  <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
-                    <Image
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      className="object-cover"
-                      sizes="288px"
-                    />
-                  </div>
-                  <p className="mt-4 text-xs uppercase tracking-[0.3em] text-slate-400">
-                    {cert.date}
-                  </p>
-                  <h3 className="mt-2 text-lg font-semibold text-white">
-                    {cert.title}
-                  </h3>
-                  <p className="text-sm text-slate-300">{cert.org}</p>
-                </article>
-              ))}
-            </div>
+        </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {certifications.map((cert) => (
+              <article
+                key={cert.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-4"
+              >
+                <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
+            <Image
+                    src={cert.image}
+                    alt={cert.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-slate-400">
+                  {cert.date}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold text-white">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-slate-300">{cert.org}</p>
+              </article>
+            ))}
           </div>
         </section>
 
         <section
           id="contact"
-          className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0b132b] via-[#101836] to-[#0f172a] p-8 backdrop-blur-2xl"
+          className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-indigo-500/20 via-cyan-500/20 to-transparent p-8 backdrop-blur-2xl"
         >
-          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-                  Get in touch
-                </p>
-                <h2 className="mt-2 text-3xl font-semibold text-white">
-                  Let&apos;s collaborate on your next product.
-                </h2>
-                <p className="text-slate-300">
-                  I&apos;m open to full-time roles, freelance engagements, and
-                  mentorship chats. Share what you&apos;re building and I&apos;ll
-                  reply with next steps within 24 hours.
-                </p>
-              </div>
-              <div className="space-y-3">
-                {contactDetails.map(({ icon: Icon, label, value, href }) => (
-                  <Link
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition hover:border-cyan-300/60"
-                  >
-                    <span className="rounded-2xl bg-white/10 p-3">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-white">
-                        {label}
-                      </p>
-                      <p className="text-sm text-slate-300">{value}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
+                Let&apos;s build together
+              </p>
+              <h2 className="text-3xl font-semibold text-white">
+                Open to software developer, AI/automation, and DX roles.
+              </h2>
+              <p className="text-slate-100/80">
+                Send an email, DM on LinkedIn, or ring me. I reply fast with a
+                project plan and crisp next steps.
+              </p>
             </div>
-            <form
-              onSubmit={handleContactSubmit}
-              className="space-y-4 rounded-3xl border border-white/15 bg-white/5 p-6"
+            <Link
+              href="mailto:gauravjoshi327@gmail.com"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:opacity-85"
             >
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-sm font-semibold text-white"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-sm font-semibold text-white"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="text-sm font-semibold text-white"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Share project goals, timelines, or ideas..."
-                  className="mt-2 w-full rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 py-3 text-base font-semibold text-slate-900 transition hover:opacity-90"
+              Write to me <SendIcon className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {contactLinks.map(({ icon: Icon, label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/10 p-4 text-white transition hover:border-white/60"
               >
-                Send message
-              </button>
-            </form>
+                <span className="rounded-2xl bg-white/20 p-3">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="text-sm font-semibold">{label}</span>
+              </Link>
+            ))}
         </div>
         </section>
 
