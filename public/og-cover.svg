@@ -1,0 +1,28 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gaurav Joshi Portfolio">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="35%" stop-color="#6366f1"/>
+      <stop offset="70%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+      <stop offset="100%" stop-color="rgba(15,23,42,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#030712"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M150 580 C380 500 420 200 720 240 C940 270 980 460 1150 380" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <path d="M80 120 C260 220 420 80 620 180 C820 280 880 200 1120 320" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+  <text x="120" y="250" font-family="Geist, 'Space Grotesk', 'Segoe UI', sans-serif" font-size="60" fill="#e2e8f0" font-weight="600">
+    Gaurav Joshi
+  </text>
+  <text x="120" y="320" font-family="Geist, 'Space Grotesk', 'Segoe UI', sans-serif" font-size="32" fill="#cbd5f5">
+    Software Developer · AI-Driven Experiences · MERN Stack
+  </text>
+  <text x="120" y="380" font-family="Geist, 'Space Grotesk', 'Segoe UI', sans-serif" font-size="24" fill="#94a3b8">
+    Building human-centered products with structured thinking & reliable execution.
+  </text>
+</svg>
+

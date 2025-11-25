@@ -419,27 +419,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mt-12 space-y-4 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Tech stack & tools
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Shipping with modern, battle-tested tech
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-2 text-sm font-semibold">
-            {skillBadges.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-slate-100"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
-
         <section className="mt-12 grid gap-6 lg:grid-cols-3">
           {skillPillars.map((pillar) => (
             <article
@@ -535,36 +514,6 @@ export default function Home() {
                   </span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </section>
-
-        <section id="education" className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Education
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Structured learning & academic foundation
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {education.map((item) => (
-              <article
-                key={item.program}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.institution}
-                  </h3>
-                  <span className="text-xs uppercase tracking-[0.2em] text-cyan-100">
-                    {item.period}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-300">{item.location}</p>
-                <p className="mt-2 text-slate-200">{item.program}</p>
-              </article>
             ))}
           </div>
         </section>

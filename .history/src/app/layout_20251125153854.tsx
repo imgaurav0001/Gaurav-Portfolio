@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: "https://portfolio-pi-jade-72.vercel.app/",
     images: [
       {
-        url: "/og-cover.svg",
+        url: "/og-cover.png",
         width: 1200,
         height: 630,
         alt: "Gaurav Joshi Portfolio preview",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Gaurav Joshi | Software & AI Engineer",
     description:
       "Building AI assistants, immersive web apps, and reliable systems.",
-    images: ["/og-cover.svg"],
+    images: ["/og-cover.png"],
   },
 };
 

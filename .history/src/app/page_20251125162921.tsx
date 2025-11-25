@@ -120,21 +120,9 @@ const navLinks = [
 ];
 
 const metrics = [
-  {
-    label: "Production-ready projects",
-    value: "15+",
-    sub: "Full-stack • AI • DX",
-  },
-  {
-    label: "Technical events facilitated",
-    value: "12",
-    sub: "Workshops & campus meets",
-  },
-  {
-    label: "LinkedIn network",
-    value: "3K+",
-    sub: "Builders & hiring partners",
-  },
+  { label: "Production-ready projects", value: "15+", sub: "MERN, AI, DX" },
+  { label: "Hackathons & events", value: "12", sub: "Facilitated & won" },
+  { label: "Community reach", value: "4.5K+", sub: "Mentored learners" },
 ];
 
 const skillPillars = [
@@ -158,36 +146,12 @@ const skillPillars = [
   },
 ];
 
-const skillBadges = [
-  "Java",
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Express.js",
-  "SQL",
-  "MongoDB",
-  "Power BI",
-  "Docker",
-  "VS Code",
-  "GitHub",
-  "Render",
-  "Vercel",
-  "Jira",
-  "AI / ML",
-  "System Design",
-  "Computer Networks",
-  "Operating Systems",
-  "DBMS",
-];
-
 const projects = [
   {
     title: "AI Virtual Assistant",
     subtitle: "Conversational OS for the browser",
     image: "/Virtual Aiistant project.png",
-    href: "https://virtual-assistant-9u59.onrender.com/",
+    stats: "99.9% uptime · 40+ reusable intents",
     summary:
       "Voice + text assistant that interprets natural commands, calls real-time APIs, and drives reminders, news digests, and contextual answers.",
     features: [
@@ -198,10 +162,10 @@ const projects = [
     stack: ["React", "Node.js", "Express", "Web Speech", "REST APIs"],
   },
   {
-    title: "Spotify Clone",
+    title: "Spotify Clone · Cadenza",
     subtitle: "Immersive streaming experience",
     image: "/spotify clone project.png",
-    href: "https://spotify-clone-by-gaurav.vercel.app/",
+    stats: "60fps UI · Offline-ready caching",
     summary:
       "A premium streaming app mirroring Spotify interactions, adaptive theming, seamless queueing, and collaborative playlists.",
     features: [
@@ -215,7 +179,7 @@ const projects = [
     title: "Trivia Quiz Arena",
     subtitle: "Single + multiplayer quiz battles",
     image: "/Quiz Game Project.png",
-    href: "https://trivia-quiz-application-game.vercel.app/",
+    stats: "200ms realtime sync",
     summary:
       "Dynamic trivia hub with curated categories, duo arenas, and streak-based power-ups for campus fests.",
     features: [
@@ -245,28 +209,6 @@ const certifications = [
     org: "Duke University · Coursera",
     date: "Oct 16, 2022",
     image: "/Java Prog Certificate.png",
-  },
-];
-
-const education = [
-  {
-    institution: "Noida Institute of Engineering and Technology",
-    location: "Greater Noida, India",
-    program:
-      "Integrated M.Tech in Computer Science and Engineering · CGPA 7.5/10",
-    period: "Aug 2021 – Jun 2026",
-  },
-  {
-    institution: "Nodegay Public School, Khatima · Uttarakhand",
-    location: "Class XII (Intermediate)",
-    program: "CBSE Board · Percentage: 76%",
-    period: "2021",
-  },
-  {
-    institution: "Nodegay Public School, Khatima · Uttarakhand",
-    location: "Class X",
-    program: "CBSE Board",
-    period: "2019",
   },
 ];
 
@@ -322,85 +264,67 @@ export default function Home() {
 
         <section
           id="about"
-          className="grid gap-12 rounded-[32px] border border-white/10 bg-gradient-to-br from-[#09122C] via-[#0B163B] to-[#111333] px-6 py-12 backdrop-blur-2xl lg:grid-cols-2"
+          className="grid gap-8 rounded-[28px] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/50 to-indigo-900/40 px-6 py-10 backdrop-blur-2xl lg:grid-cols-[1.2fr_0.8fr]"
         >
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-500/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100">
               <SparklesIcon className="h-4 w-4" />
-              Hello, I&apos;m
+              MTech CSE · Final Year
             </span>
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.4em] text-cyan-200">
-                Software & AI Engineer
-              </p>
-              <h1 className="mt-3 text-5xl font-semibold leading-tight text-white md:text-6xl">
-                Gaurav Joshi
-                <br />
-                <span className="text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text">
-                  Full Stack Developer
-                </span>
-              </h1>
-            </div>
+            <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
+              Crafting human-centered software & AI experiences with
+              launch-ready polish.
+            </h1>
             <p className="text-lg text-slate-300">
-              I build human-centered digital experiences that are fast,
-              intelligent, and visually stunning. With a strong foundation in CS
-              fundamentals and DevOps hygiene, I translate complex requirements
-              into launch-ready products with AI-infused workflows.
+              I&apos;m Gaurav Joshi—software engineer, AI enthusiast, and
+              Integrated BTech-MTech student at NIET. I thrive on structured
+              planning, crisp communication, and building products that blend
+              intelligence with delightful UI. Let&apos;s craft the next bold
+              idea together.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-500 px-6 py-3 text-base font-semibold text-slate-900 transition hover:opacity-90"
               >
-                Get in touch <SendIcon className="h-4 w-4" />
+                Showcase work <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
               <Link
-                href="#projects"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
-                View projects <ArrowUpRightIcon className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="flex gap-4 text-slate-300">
-              <Link
-                href="https://github.com/imgaurav0001"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <GithubIcon />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/gauravjoshi327/"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <LinkedinIcon />
-              </Link>
-              <Link
-                href="mailto:gauravjoshi327@gmail.com"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <MailIcon />
+                Book a call <SendIcon className="h-4 w-4" />
               </Link>
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-8">
-            <div className="w-full rounded-[28px] border border-white/10 bg-gradient-to-b from-[#182044] to-[#0E122B] p-4">
-              <div className="relative h-[420px] overflow-hidden rounded-[24px] border border-white/10 bg-[#0B0E1F] shadow-[0_30px_160px_-60px_rgba(99,102,241,0.8)]">
-                <Image
-                  src="/My-Profile_Image.jpg"
-                  alt="Gaurav Joshi portrait"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 80vw, 40vw"
-                  priority
-                />
+          <div className="relative flex items-center justify-center">
+            <div className="absolute inset-x-4 top-6 rounded-2xl border border-cyan-100/20 bg-gradient-to-b from-white/5 to-transparent p-5 backdrop-blur-2xl shadow-[0_30px_160px_-60px_rgba(59,130,246,0.8)]">
+              <div className="flex items-center gap-4">
+                <div className="relative h-28 w-28 overflow-hidden rounded-full border border-white/20">
+                  <Image
+                    src="/My-Profile_Image.jpg"
+                    alt="Gaurav Joshi portrait"
+                    fill
+                    className="object-cover"
+                    sizes="120px"
+                    priority
+                  />
+                </div>
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-cyan-200">
+                    Based in Greater Noida
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-white">
+                    Gaurav Joshi
+                  </p>
+                  <p className="text-sm text-slate-300">
+                    Software Developer · AI-driven Futures
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="grid w-full gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 sm:grid-cols-3">
+            <div className="mt-44 grid w-full gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 sm:grid-cols-3">
               {metrics.map((metric) => (
                 <div
                   key={metric.label}
@@ -416,27 +340,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="mt-12 space-y-4 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Tech stack & tools
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Shipping with modern, battle-tested tech
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-2 text-sm font-semibold">
-            {skillBadges.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-slate-100"
-              >
-                {skill}
-              </span>
-            ))}
           </div>
         </section>
 
@@ -485,22 +388,22 @@ export default function Home() {
           </div>
           <div className="grid gap-8">
             {projects.map((project) => (
-              <Link
+              <article
                 key={project.title}
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group grid gap-6 rounded-[28px] border border-white/10 bg-slate-900/50 p-6 backdrop-blur-2xl transition hover:border-cyan-300/60 lg:grid-cols-2"
+                className="grid gap-6 rounded-[28px] border border-white/10 bg-slate-900/50 p-6 backdrop-blur-2xl lg:grid-cols-2"
               >
                 <div className="relative min-h-[280px] overflow-hidden rounded-2xl border border-white/10">
                   <Image
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     fill
-                    className="object-cover transition duration-300 group-hover:scale-105"
+                    className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={project.title === "AI Virtual Assistant"}
                   />
+                  <div className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold text-white">
+                    {project.stats}
+                  </div>
                 </div>
                 <div className="space-y-4">
                   <div className="space-y-2">
@@ -530,40 +433,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">
-                    Visit live build <ArrowUpRightIcon className="h-4 w-4" />
-                  </span>
                 </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section id="education" className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Education
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Structured learning & academic foundation
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {education.map((item) => (
-              <article
-                key={item.program}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.institution}
-                  </h3>
-                  <span className="text-xs uppercase tracking-[0.2em] text-cyan-100">
-                    {item.period}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-300">{item.location}</p>
-                <p className="mt-2 text-slate-200">{item.program}</p>
               </article>
             ))}
           </div>
@@ -656,7 +526,8 @@ export default function Home() {
         </section>
 
         <p className="mt-12 text-center text-xs uppercase tracking-[0.35em] text-slate-500">
-          © 2025 Gaurav Joshi. All rights reserved.
+          © {new Date().getFullYear()} Gaurav Joshi · Crafted with Next.js 16 +
+          Tailwind 4
         </p>
       </main>
     </div>

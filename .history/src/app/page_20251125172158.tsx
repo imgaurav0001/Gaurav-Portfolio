@@ -322,82 +322,64 @@ export default function Home() {
 
         <section
           id="about"
-          className="grid gap-12 rounded-[32px] border border-white/10 bg-gradient-to-br from-[#09122C] via-[#0B163B] to-[#111333] px-6 py-12 backdrop-blur-2xl lg:grid-cols-2"
+          className="grid gap-8 rounded-[28px] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/50 to-indigo-900/40 px-6 py-10 backdrop-blur-2xl lg:grid-cols-[1.2fr_0.8fr]"
         >
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-500/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100">
               <SparklesIcon className="h-4 w-4" />
-              Hello, I&apos;m
+              MTech CSE · Final Year
             </span>
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.4em] text-cyan-200">
-                Software & AI Engineer
-              </p>
-              <h1 className="mt-3 text-5xl font-semibold leading-tight text-white md:text-6xl">
-                Gaurav Joshi
-                <br />
-                <span className="text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text">
-                  Full Stack Developer
-                </span>
-              </h1>
-            </div>
+            <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
+              Crafting human-centered software & AI experiences with
+              launch-ready polish.
+            </h1>
             <p className="text-lg text-slate-300">
-              I build human-centered digital experiences that are fast,
-              intelligent, and visually stunning. With a strong foundation in CS
-              fundamentals and DevOps hygiene, I translate complex requirements
-              into launch-ready products with AI-infused workflows.
+              I&apos;m Gaurav Joshi—software engineer, AI enthusiast, and
+              Integrated BTech-MTech student at NIET. I thrive on structured
+              planning, crisp communication, and building products that blend
+              intelligence with delightful UI. Let&apos;s craft the next bold
+              idea together.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:opacity-90"
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-500 px-6 py-3 text-base font-semibold text-slate-900 transition hover:opacity-90"
               >
-                Get in touch <SendIcon className="h-4 w-4" />
+                Showcase work <ArrowUpRightIcon className="h-4 w-4" />
               </Link>
               <Link
-                href="#projects"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-base font-semibold text-white transition hover:border-cyan-300/70"
               >
-                View projects <ArrowUpRightIcon className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="flex gap-4 text-slate-300">
-              <Link
-                href="https://github.com/imgaurav0001"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <GithubIcon />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/gauravjoshi327/"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <LinkedinIcon />
-              </Link>
-              <Link
-                href="mailto:gauravjoshi327@gmail.com"
-                className="rounded-full border border-white/10 p-3 transition hover:border-cyan-300/60"
-              >
-                <MailIcon />
+                Book a call <SendIcon className="h-4 w-4" />
               </Link>
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-8">
-            <div className="w-full rounded-[28px] border border-white/10 bg-gradient-to-b from-[#182044] to-[#0E122B] p-4">
-              <div className="relative h-[420px] overflow-hidden rounded-[24px] border border-white/10 bg-[#0B0E1F] shadow-[0_30px_160px_-60px_rgba(99,102,241,0.8)]">
-                <Image
-                  src="/My-Profile_Image.jpg"
-                  alt="Gaurav Joshi portrait"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 80vw, 40vw"
-                  priority
-                />
+          <div className="flex flex-col items-center gap-10">
+            <div className="w-full rounded-2xl border border-cyan-100/20 bg-gradient-to-b from-white/5 to-transparent p-6 shadow-[0_30px_160px_-60px_rgba(59,130,246,0.8)]">
+              <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
+                <div className="relative h-40 w-40 overflow-hidden rounded-full border border-white/20 shadow-[0_25px_90px_-40px_rgba(59,130,246,0.9)]">
+                  <Image
+                    src="/My-Profile_Image.jpg"
+                    alt="Gaurav Joshi portrait"
+                    fill
+                    className="object-cover"
+                    sizes="160px"
+                    priority
+                  />
+                </div>
+                <div className="text-center sm:text-left">
+                  <p className="text-sm uppercase tracking-[0.3em] text-cyan-200">
+                    Based in Greater Noida
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-white">
+                    Gaurav Joshi
+                  </p>
+                  <p className="text-sm text-slate-300">
+                    Software Developer · AI-driven Futures
+                  </p>
+                </div>
               </div>
             </div>
             <div className="grid w-full gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-100 sm:grid-cols-3">
@@ -416,27 +398,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="mt-12 space-y-4 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Tech stack & tools
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Shipping with modern, battle-tested tech
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-2 text-sm font-semibold">
-            {skillBadges.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-slate-100"
-              >
-                {skill}
-              </span>
-            ))}
           </div>
         </section>
 
@@ -535,36 +496,6 @@ export default function Home() {
                   </span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </section>
-
-        <section id="education" className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
-              Education
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">
-              Structured learning & academic foundation
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {education.map((item) => (
-              <article
-                key={item.program}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-white">
-                    {item.institution}
-                  </h3>
-                  <span className="text-xs uppercase tracking-[0.2em] text-cyan-100">
-                    {item.period}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-300">{item.location}</p>
-                <p className="mt-2 text-slate-200">{item.program}</p>
-              </article>
             ))}
           </div>
         </section>
