@@ -189,22 +189,22 @@ const softSkills = [
   {
     title: "Time management",
     description:
-      "Plan realistic milestones, protect focus time, and keep delivery steady.",
+      "Plan milestones with buffers, automate routine reviews, and keep releases predictable.",
   },
   {
     title: "Communication",
     description:
-      "Explain work clearly, document the decisions, and share quick demos for alignment.",
+      "Share crisp async updates, document decisions, and run demos so everyone stays aligned.",
   },
   {
     title: "Adaptability",
     description:
-      "Prototype fast, listen to feedback, and swap tools when the problem demands it.",
+      "Prototype quickly, test with users, and swap tools when product signals demand change.",
   },
   {
     title: "Leadership",
     description:
-      "Give clear ownership, mentor teammates, and remove blockers early.",
+      "Mentor peers, set ownership clearly, and unblock teams through paired problem solving.",
   },
 ];
 

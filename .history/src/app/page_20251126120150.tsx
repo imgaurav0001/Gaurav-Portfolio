@@ -189,22 +189,26 @@ const softSkills = [
   {
     title: "Time management",
     description:
-      "Plan realistic milestones, protect focus time, and keep delivery steady.",
+      "Ship consistently by breaking work into milestones, keeping buffers for review, and automating the routine pieces.",
+    highlight: "Sprint burn-downs delivered 100% on-schedule last 6 months.",
   },
   {
     title: "Communication",
     description:
-      "Explain work clearly, document the decisions, and share quick demos for alignment.",
+      "Set context early, document decisions, and keep stakeholders in the loop with async updates and quick demos.",
+    highlight: "Hosted 12+ tech events and weekly product syncs.",
   },
   {
     title: "Adaptability",
     description:
-      "Prototype fast, listen to feedback, and swap tools when the problem demands it.",
+      "De-risk launches by prototyping rapidly, A/B testing UX, and swapping stacks when customer feedback requires change.",
+    highlight: "Turned around AI assistant pivot in < 2 sprints.",
   },
   {
     title: "Leadership",
     description:
-      "Give clear ownership, mentor teammates, and remove blockers early.",
+      "Mentor juniors, unblock with paired sessions, and keep ownership clear so everyone ships confidently.",
+    highlight: "Led campus hack teams & mentored 30+ peers.",
   },
 ];
 
@@ -551,9 +555,14 @@ export default function Home() {
                 key={skill.title}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5"
               >
-                <h3 className="text-lg font-semibold text-white">
-                  {skill.title}
-                </h3>
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-lg font-semibold text-white">
+                    {skill.title}
+                  </h3>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan-100">
+                    {skill.highlight}
+                  </span>
+                </div>
                 <p className="mt-3 text-sm text-slate-300">{skill.description}</p>
               </article>
             ))}
