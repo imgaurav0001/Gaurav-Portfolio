@@ -753,7 +753,6 @@ export default function Home() {
         </section>
 
         <section
-          data-reveal
           id="certifications"
           className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl"
         >
@@ -774,9 +773,7 @@ export default function Home() {
             <div className="marquee-track gap-4">
               {marqueeCerts.map((cert, index) => (
                 <article
-                  data-reveal
                   key={`${cert.title}-${index}`}
-                  style={{ transitionDelay: `${(index % certifications.length) * 60}ms` }}
                   className="w-72 flex-shrink-0 rounded-3xl border border-white/10 bg-white/5 p-4"
                 >
                   <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
@@ -802,7 +799,6 @@ export default function Home() {
         </section>
 
         <section
-          data-reveal
           id="contact"
           className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0b132b] via-[#101836] to-[#0f172a] p-8 backdrop-blur-2xl"
         >
@@ -822,12 +818,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="space-y-3">
-                {contactDetails.map(
-                  ({ icon: Icon, label, value, href }, index) => (
+                {contactDetails.map(({ icon: Icon, label, value, href }) => (
                   <Link
-                      data-reveal
                     key={label}
-                      style={{ transitionDelay: `${index * 70}ms` }}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noreferrer" : undefined}
@@ -847,7 +840,6 @@ export default function Home() {
               </div>
             </div>
             <form
-              data-reveal
               onSubmit={handleContactSubmit}
               className="space-y-4 rounded-3xl border border-white/15 bg-white/5 p-6"
             >

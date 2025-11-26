@@ -564,10 +564,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          data-reveal
-          className="mt-8 space-y-4 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl"
-        >
+        <section className="mt-8 space-y-4 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
               Human skills
@@ -577,11 +574,9 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {softSkills.map((skill, index) => (
+            {softSkills.map((skill) => (
               <article
-                data-reveal
                 key={skill.title}
-                style={{ transitionDelay: `${index * 80}ms` }}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5"
               >
                 <h3 className="text-lg font-semibold text-white">
@@ -593,12 +588,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section data-reveal className="mt-12 grid gap-6 lg:grid-cols-3">
-          {skillPillars.map((pillar, index) => (
+        <section className="mt-12 grid gap-6 lg:grid-cols-3">
+          {skillPillars.map((pillar) => (
             <article
-              data-reveal
               key={pillar.title}
-              style={{ transitionDelay: `${index * 90}ms` }}
               className="rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/60 via-slate-900/30 to-slate-900/10 p-6 backdrop-blur-2xl"
             >
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200">
@@ -619,7 +612,7 @@ export default function Home() {
           ))}
         </section>
 
-        <section data-reveal id="projects" className="mt-14 space-y-8">
+        <section id="projects" className="mt-14 space-y-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
@@ -639,11 +632,9 @@ export default function Home() {
             </Link>
         </div>
           <div className="grid gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <article
-                data-reveal
                 key={project.title}
-                style={{ transitionDelay: `${index * 100}ms` }}
                 className="grid gap-6 rounded-[28px] border border-white/10 bg-slate-900/50 p-6 backdrop-blur-2xl transition hover:border-cyan-300/60 lg:grid-cols-2"
               >
                 <Link
@@ -716,11 +707,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          data-reveal
-          id="education"
-          className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl"
-        >
+        <section id="education" className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200">
               Education
@@ -730,11 +717,9 @@ export default function Home() {
             </h2>
           </div>
           <div className="space-y-4">
-            {education.map((item, index) => (
+            {education.map((item) => (
               <article
-                data-reveal
                 key={item.program}
-                style={{ transitionDelay: `${index * 70}ms` }}
                 className="rounded-2xl border border-white/10 bg-white/5 p-5"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -753,7 +738,6 @@ export default function Home() {
         </section>
 
         <section
-          data-reveal
           id="certifications"
           className="mt-16 space-y-6 rounded-[28px] border border-white/10 bg-slate-900/60 p-6 backdrop-blur-2xl"
         >
@@ -774,9 +758,7 @@ export default function Home() {
             <div className="marquee-track gap-4">
               {marqueeCerts.map((cert, index) => (
                 <article
-                  data-reveal
                   key={`${cert.title}-${index}`}
-                  style={{ transitionDelay: `${(index % certifications.length) * 60}ms` }}
                   className="w-72 flex-shrink-0 rounded-3xl border border-white/10 bg-white/5 p-4"
                 >
                   <div className="relative h-48 overflow-hidden rounded-2xl border border-white/10 bg-white">
@@ -802,7 +784,6 @@ export default function Home() {
         </section>
 
         <section
-          data-reveal
           id="contact"
           className="mt-16 rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0b132b] via-[#101836] to-[#0f172a] p-8 backdrop-blur-2xl"
         >
@@ -822,12 +803,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="space-y-3">
-                {contactDetails.map(
-                  ({ icon: Icon, label, value, href }, index) => (
+                {contactDetails.map(({ icon: Icon, label, value, href }) => (
                   <Link
-                      data-reveal
                     key={label}
-                      style={{ transitionDelay: `${index * 70}ms` }}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noreferrer" : undefined}
@@ -847,7 +825,6 @@ export default function Home() {
               </div>
             </div>
             <form
-              data-reveal
               onSubmit={handleContactSubmit}
               className="space-y-4 rounded-3xl border border-white/15 bg-white/5 p-6"
             >
