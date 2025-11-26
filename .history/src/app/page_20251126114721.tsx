@@ -378,7 +378,7 @@ export default function Home() {
           </nav>
           <Link
             href="mailto:gauravjoshi327@gmail.com"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition hover:opacity-80 lg:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition hover:opacity-80 md:w-auto"
           >
             Available now
           </Link>

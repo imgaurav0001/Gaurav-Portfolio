@@ -361,7 +361,7 @@ export default function Home() {
   return (
     <div className="page-shell min-h-screen text-slate-100">
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:px-8 md:pb-24 md:pt-16">
-        <header className="z-20 mb-10 flex w-full flex-col items-center gap-4 rounded-3xl border border-white/10 bg-slate-900/70 px-5 py-4 text-center backdrop-blur-xl lg:sticky lg:top-6 lg:flex-row lg:justify-between lg:rounded-full lg:text-left">
+        <header className="z-20 mb-10 flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-slate-900/70 px-6 py-4 text-center backdrop-blur-xl md:sticky md:top-6 md:flex-row md:justify-between md:rounded-full md:text-left">
           <div className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200">
             Gaurav Joshi
           </div>
@@ -378,7 +378,7 @@ export default function Home() {
           </nav>
           <Link
             href="mailto:gauravjoshi327@gmail.com"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition hover:opacity-80 lg:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition hover:opacity-80 md:w-auto"
           >
             Available now
           </Link>
